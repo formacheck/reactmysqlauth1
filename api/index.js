@@ -33,7 +33,7 @@ app.post('/signup', (req, res) => {
 
 
 app.post('/signin', (req, res) => {
-    const sql = "SELECT * FROM users WHERE `email` = ? AND `password` = ?"
+    const sql = "SELECT * FROM users WHERE email = ? AND password = ?"
     db.query(sql, [req.body.email, req.body.password], (err, data) => {
         if (err) {
             return res.json("error");

@@ -18,16 +18,16 @@ const Register = () => {
         setValues(prev => ({ ...prev, [event.target.name]: [event.target.value] }))
     }
 
-    navigator = useNavigate()
+    const navigate = useNavigate()
 
     const handleSubmit = (event) => {
         event.preventDefault();
         setErrors(validation1(values))
         if (errors.uname === "" && errors.email === "" && errors.password === "") {
-            axios.post('localhost:8080/signup', values)
+            axios.post('http://localhost:8080/signup', values)
                 // .then(res => console.log(res)) testing
                 .then(res => {
-                    Navigate('/login')
+                    navigate('/login')
                 })
                 .catch(err => console.log(err))
         }

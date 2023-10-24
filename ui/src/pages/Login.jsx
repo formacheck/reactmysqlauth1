@@ -15,17 +15,17 @@ const Login = () => {
         setValues(prev => ({ ...prev, [event.target.name]: [event.target.value] }))
     }
 
-    navigator = useNavigate()
+    const navigate = useNavigate()
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setErrors(validation1(values))
+        setErrors(validation(values))
         if (errors.email === "" && errors.password === "") {
-            axios.post('localhost:8080/signin', values)
+            axios.post('http://localhost:8080/signin', values)
                 // .then(res => console.log(res)) testing
                 .then(res => {
                     if (res.data === "success") {
-                        Navigate('/home')
+                        navigate('/home')
                     }
                     else {
                         alert("in valid credentials")
